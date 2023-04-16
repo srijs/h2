@@ -96,7 +96,7 @@ impl Header {
         } else {
             // HTTP/2 requires lower case header names
             let name = HeaderName::from_lowercase(&name)?;
-            let value = HeaderValue::from_bytes(&value)?;
+            let value = HeaderValue::from_maybe_shared(value)?;
 
             Ok(Header::Field { name, value })
         }
